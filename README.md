@@ -1,3 +1,5 @@
+[![.NET](https://github.com/NewMayur/LifecycleProject/actions/workflows/dotnet.yml/badge.svg)](https://github.com/NewMayur/LifecycleProject/actions/workflows/dotnet.yml)
+
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
