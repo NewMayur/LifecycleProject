@@ -13,6 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  ConnectionStrings.DefaultConnection: ${AuthDBConnectionString}
+  ConnectionStrings.UserDatabase: ${UserDBConnectionString}
 
 steps:
 - task: NuGetToolInstaller@1
@@ -23,9 +25,8 @@ steps:
 
 - task: FileTransform@1
   inputs:
-    folderPath: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject'
+    folderPath: '$(build.artifactStagingDirectory))\\MVCLifeCycle'
     fileType: 'json'
-    targetFiles: 'appsettings.json'
 
 - task: VSBuild@1
   inputs:
