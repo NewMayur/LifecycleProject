@@ -23,9 +23,9 @@ steps:
 
 - task: FileTransform@1
   inputs:
-    folderPath: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject\\appsettings.Development.json'
+    folderPath: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject'
     fileType: 'json'
-    targetFiles: '**/.json'
+    targetFiles: 'appsettings.json'
 
 - task: VSBuild@1
   inputs:
