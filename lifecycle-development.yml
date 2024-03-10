@@ -19,7 +19,19 @@ steps:
     downloadType: 'single'
     downloadPath: '$(System.ArtifactsDirectory)'
 
-
+- task: replacetokens@5
+  inputs:
+    targetFiles: '**/*.json'
+    encoding: 'auto'
+    tokenPattern: 'default'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    actionOnNoFiles: 'continue'
+    enableTransforms: false
+    enableRecursion: false
+    useLegacyPattern: false
+    enableTelemetry: true
 
 - task: AzureRmWebAppDeployment@4
   inputs:
