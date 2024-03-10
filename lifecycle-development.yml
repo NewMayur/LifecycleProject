@@ -19,6 +19,8 @@ steps:
     downloadType: 'single'
     downloadPath: '$(System.ArtifactsDirectory)'
 
+
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
