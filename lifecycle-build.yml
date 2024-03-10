@@ -13,8 +13,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  ConnectionStrings.DefaultConnection: ${AuthDBConnectionString}
-  ConnectionStrings.UserDatabase: ${UserDBConnectionString}
 
 steps:
 - task: NuGetToolInstaller@1
@@ -22,11 +20,6 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
-- task: FileTransform@2
-  inputs:
-    folderPath: '$(build.artifactStagingDirectory)\\MVCLifeCycle'
-    fileType: 'json'
 
 - task: VSBuild@1
   inputs:
