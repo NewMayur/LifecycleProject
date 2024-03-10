@@ -21,10 +21,16 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: ConfigTransformation@1
+  inputs:
+    xml: '$(build.artifactStagingDirectory)\\_PublishedWebsites\\LifeCycleProject'
+    xdt: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject\\appsettings.Development.json'
+    output: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject\\appsettings.json'
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:OutDir="($(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject\\"'
+    msbuildArgs: '/p:OutDir="$(build.artifactStagingDirectory)\\_PublishedWebsites\\LifeCycleProject"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 

@@ -19,13 +19,27 @@ steps:
     downloadType: 'single'
     downloadPath: '$(System.ArtifactsDirectory)'
 
+- task: replacetokens@5
+  inputs:
+    targetFiles: '**/*.json'
+    encoding: 'auto'
+    tokenPattern: 'default'
+    writeBOM: true
+    actionOnMissing: 'warn'
+    keepToken: false
+    actionOnNoFiles: 'continue'
+    enableTransforms: false
+    enableRecursion: false
+    useLegacyPattern: false
+    enableTelemetry: true
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Free Trial(e54a1815-fb94-4ff2-aca3-8cf4eb56be1b)'
     appType: 'webApp'
     WebAppName: 'LPDeve'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(build.artifactStagingDirectory)\\_LifeCycleProjectBuild\\drop\\_PublishedWebsites\\LifeCycleProject'
 
 - task: SqlAzureDacpacDeployment@1
   inputs:
@@ -37,4 +51,5 @@ steps:
     SqlPassword: '$(sqlpassword)'
     deployType: 'DacpacTask'
     DeploymentAction: 'Publish'
+    DacpacFile: '$(build.artifactStagingDirectory)\\_LifeCycleProjectBuild\\drop\\_PublishedWebsites\\LifeCycleProject.UserDatabase.dacpac'
     IpDetectionMethod: 'AutoDetect'
