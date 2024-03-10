@@ -1,4 +1,4 @@
-[![.NET](https://github.com/NewMayur/LifecycleProject/actions/workflows/dotnet.yml/badge.svg)](https://github.com/NewMayur/LifecycleProject/actions/workflows/dotnet.yml)
+[![Build Status](https://dev.azure.com/neworange28/LifeCycleProject/_apis/build/status%2FLifeCycleProject?branchName=master)](https://dev.azure.com/neworange28/LifeCycleProject/_build/latest?definitionId=7&branchName=master)
 
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
