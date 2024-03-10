@@ -1,0 +1,28 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'specific'
+    project: '9e47b673-4d6d-434a-90d8-7c53244870e8'
+    pipeline: '7'
+    buildVersionToDownload: 'latest'
+    downloadType: 'single'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(e54a1815-fb94-4ff2-aca3-8cf4eb56be1b)'
+    appType: 'webApp'
+    WebAppName: 'LPDeve'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
