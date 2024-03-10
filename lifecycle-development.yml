@@ -26,3 +26,15 @@ steps:
     appType: 'webApp'
     WebAppName: 'LPDeve'
     packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+
+- task: SqlAzureDacpacDeployment@1
+  inputs:
+    azureSubscription: 'Free Trial(e54a1815-fb94-4ff2-aca3-8cf4eb56be1b)'
+    AuthenticationType: 'server'
+    ServerName: 'lifecycleprojectserv.database.windows.net'
+    DatabaseName: 'LPDevUserDB'
+    SqlUsername: '$(sqlusername)'
+    SqlPassword: '$(sqlpassword)'
+    deployType: 'DacpacTask'
+    DeploymentAction: 'Publish'
+    IpDetectionMethod: 'AutoDetect'
