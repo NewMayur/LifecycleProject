@@ -21,11 +21,11 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: ConfigTransformation@1
+- task: FileTransform@1
   inputs:
-    xml: '$(build.artifactStagingDirectory)\\_PublishedWebsites\\LifeCycleProject'
-    xdt: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject\\appsettings.Development.json'
-    output: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject\\appsettings.json'
+    folderPath: '$(build.artifactStagingDirectory))\\_PublishedWebsites\\LifeCycleProject'
+    fileType: 'json'
+    targetFiles: 'appsettings.json'
 
 - task: VSBuild@1
   inputs:
